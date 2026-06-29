@@ -28,6 +28,8 @@ class NovoPedidoRequest extends FormRequest
             "canalPedido" => "required|integer|between:1,5",
             "nomeCliente" => "string",
             "observacao" => "string",
+            "email" => "required|string",
+            "senha" => "required|string",
             "itens" => "array|required",
             "itens.*.quantidade" => "required|integer",
             "itens.*.produtoId" => "required|integer",

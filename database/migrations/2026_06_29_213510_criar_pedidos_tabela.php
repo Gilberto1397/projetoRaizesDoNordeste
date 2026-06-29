@@ -13,9 +13,8 @@ class CriarPedidosTabela extends Migration
      */
     public function up()
     {
-        <<<SQL
-    CREATE TABLE "Pedidos" (
-  "pedidos_id" SERIAL PRIMARY KEY,
+        DB::unprepared(<<<SQL
+CREATE TABLE "pedidos" (
   "pedidos_canalpedido" smallint NOT NULL,
   "pedidos_nomecliente" varchar,
   "pedidos_cadastradorpor" smallint,
@@ -23,7 +22,7 @@ class CriarPedidosTabela extends Migration
   "pedidos_status" varchar,
   "pedidos_created_at" datetime DEFAULT (now())
 );
-SQL;
+SQL);
 
     }
 
@@ -34,6 +33,6 @@ SQL;
      */
     public function down()
     {
-        Schema::dropIfExists('Pedidos');
+        Schema::dropIfExists('pedidos');
     }
 }
