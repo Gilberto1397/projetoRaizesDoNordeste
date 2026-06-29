@@ -15,13 +15,12 @@ class CriarPedidosTabela extends Migration
     {
         <<<SQL
     CREATE TABLE "Pedidos" (
-  "pedidos_id" BIGSERIAL PRIMARY KEY,
+  "pedidos_id" SERIAL PRIMARY KEY,
   "pedidos_canalpedido" smallint NOT NULL,
-  "pedidos_cliente" bigint,
   "pedidos_nomecliente" varchar,
-  "pedidos_enderecoentrega" bigint,
-  "pedidos_cadastradorpor" bigint,
+  "pedidos_cadastradorpor" smallint,
   "pedidos_observacao" varchar,
+  "pedidos_status" varchar,
   "pedidos_created_at" datetime DEFAULT (now())
 );
 SQL;
