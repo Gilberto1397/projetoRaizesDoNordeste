@@ -17,5 +17,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
     Route::post('/pedidos', [PedidoController::class, 'criarPedido']);
-    Route::post('/login', [AutenticacaoController::class, 'autenticar']);
+    Route::post('/auth/login', [AutenticacaoController::class, 'autenticar']);
 });

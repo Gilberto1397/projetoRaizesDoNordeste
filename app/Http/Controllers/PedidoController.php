@@ -14,11 +14,11 @@ class PedidoController extends Controller
     {
         try {
             if ($this->autenticar($request) !== self::ATENDENTE) {
-                throw new \DomainException('Usuário não autorizado a realizar pedidos!');
+                throw new \DomainException('Usuário não autorizado a realizar pedidos!', 401);
             }
 
             if (!$this->realizarPagamento()) {
-                throw new \DomainException('Erro ao processar pagamento!');
+                throw new \DomainException('Erro ao processar pagamento!', 500);
             }
 
             $pedido = Pedido::create([
@@ -29,7 +29,7 @@ class PedidoController extends Controller
                 'pedidos_created_at' => now(),
             ]);
             if (!$pedido) {
-                throw new \DomainException('Erro ao criar o pedido!');
+                throw new \DomainException('Erro ao criar o pedido!', 500);
             }
             $resposta = (object)[
                 "error" => false,
@@ -43,7 +43,7 @@ class PedidoController extends Controller
                 "message" => $e->getMessage(),
                 "data" => null
             ];
-            return response()->json($resposta, 500);
+            return response()->json($resposta, $e->getCode());
         }
     }
 
@@ -61,6 +61,6 @@ class PedidoController extends Controller
         if ($request->input('email', '') === 'atendente2@mail.com' && $request->input('senha', '') === '12345678') {
             return self::CLIENTE;
         }
-        throw new \DomainException('Credenciais inválidas');
+        throw new \DomainException('Credenciais inválidas', 401);
     }
 }
