@@ -13,22 +13,23 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        DB::unprepared(<<<SQL
-CREATE TABLE "usuarios" (
-  "usuarios_nome" varchar NOT NULL,
-  "usuarios_email" varchar UNIQUE NOT NULL,
-  "usuarios_telefone" varchar NOT NULL,
-  "usuarios_cpf" varchar UNIQUE NOT NULL,
-  "usuarios_senha" varchar NOT NULL,
-  "usuarios_pontos" int,
-  "usuarios_perfil" smallint NOT NULL,
-  "usuarios_cadastradorpor" bigint,
-  "usuarios_atualizadopor" bigint,
-  "usuarios_created_at" datetime DEFAULT (now()),
-  "usuarios_updated_at" datetime DEFAULT (now()),
-  "usuarios_ativo" boolean DEFAULT true
-);
-SQL);
+        Schema::create('usuarios', function (Blueprint $table) {
+            $table->bigIncrements('usuarios_id');
+            $table->string('usuarios_email')->unique();
+            $table->string('usuarios_senha');
+            $table->bigInteger('usuarios_cadastradorpor')->nullable()->unsigned();
+            $table->bigInteger('usuarios_atualizadopor')->nullable()->unsigned();
+            $table->timestamp('usuarios_created_at')->useCurrent();
+            $table->timestamp('usuarios_updated_at')->useCurrent();
+            $table->boolean('usuarios_ativo')->default(true);
+
+            $table->foreign('usuarios_cadastradorpor')
+                ->references('usuarios_id')
+                ->on('usuarios');
+            $table->foreign('usuarios_atualizadopor')
+                ->references('usuarios_id')
+                ->on('usuarios');
+        });
 
     }
 
