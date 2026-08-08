@@ -40,33 +40,27 @@ class NovoPedidoService
             $pedido = $this->pedidoRepository->criar([
                 'canalPedido' => $dados['canalPedido'],
                 'nomeCliente' => $dados['nomeCliente'],
-                'clienteId' => $dados['clienteId'] ?? null,
-                'funcionarioId' => $dados['funcionarioId'] ?? null,
             ]);
 
             // 3. Adicionar produtos ao pedido
-            $this->pedidoRepository->adicionarProdutos($pedido->pedidos_id, $dados['itens']);
+            $this->pedidoRepository->adicionarProdutos($pedido->pedidos_id, $dados['produtos']);
 
             // 4. Registrar pagamento
             $this->pedidoRepository->registrarPagamento($pedido->pedidos_id, [
                 'formaPagamento' => $dados['formaPagamento'],
                 'statusPagamento' => $resultadoPagamento['status'],
-                'resposta' => $resultadoPagamento['resposta_gateway'],
+                'resposta' => $resultadoPagamento['resposta'],
             ]);
 
             // 5. Registrar movimentação inicial (Cozinha)
             $this->pedidoRepository->registrarMovimentacao(
                 $pedido->pedidos_id,
                 self::STATUS_COZINHA,
-                $dados['funcionarioId'] ?? null
+                1 //TROCAR AQUI PARA SER OBRIGATÓRIO
             );
 
             return [
-                'sucesso' => true,
                 'mensagem' => 'Pedido realizado com sucesso',
-                'pedidoId' => $pedido->pedidos_id,
-                'idTransacao' => $resultadoPagamento['id_transacao'],
-                'status' => 'cozinha'
             ];
         });
     }

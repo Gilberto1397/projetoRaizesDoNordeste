@@ -42,18 +42,13 @@ class PedidoRepository
         ]);
     }
 
-    public function registrarMovimentacao(int $pedidoId, int $statusPedido, ?int $funcionarioId = null): MovimentacaoPedido
+    public function registrarMovimentacao(int $pedidoId, int $statusPedido, ?int $funcionarioId): MovimentacaoPedido
     {
         return MovimentacaoPedido::create([
             'movimentacoespedidos_pedido' => $pedidoId,
             'movimentacoespedidos_statuspedido' => $statusPedido,
-            'movimentacoespedidos_cadastradorpor' => $funcionarioId ?? 1,
+            'movimentacoespedidos_cadastradorpor' => $funcionarioId,
             'movimentacoespedidos_created_at' => now(),
         ]);
-    }
-
-    public function obterPorId(int $pedidoId): ?Pedido
-    {
-        return Pedido::find($pedidoId);
     }
 }

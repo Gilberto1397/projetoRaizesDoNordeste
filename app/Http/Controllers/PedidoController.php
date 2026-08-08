@@ -15,11 +15,7 @@ class PedidoController extends Controller
             return response()->json([
                 'erro' => false,
                 'mensagem' => $resultado['mensagem'],
-                'dados' => [
-                    'pedidoId' => $resultado['pedidoId'],
-                    'idTransacao' => $resultado['idTransacao'],
-                    'status' => $resultado['status']
-                ]
+                'dados' => null
             ], 201);
         } catch (\DomainException $e) {
             return response()->json(['erro' => true, 'mensagem' => $e->getMessage(), 'dados' => null], $e->getCode());

@@ -20,11 +20,9 @@ class PagamentoGateway
                 'aprovado' => true,
                 'status' => self::STATUS_APROVADO,
                 'mensagem' => 'Pagamento aprovado com sucesso',
-                'id_transacao' => 'TRX_' . uniqid(),
-                'resposta_gateway' => json_encode([
-                    'timestamp' => now(),
+                'resposta' => json_encode([
                     'codigo' => '200',
-                    'descricao' => 'Transação aprovada'
+                    'descricao' => 'Transacao aprovada'
                 ])
             ];
         }
@@ -33,11 +31,9 @@ class PagamentoGateway
             'aprovado' => false,
             'status' => self::STATUS_RECUSADO,
             'mensagem' => 'Pagamento recusado',
-            'id_transacao' => 'TRX_' . uniqid(),
-            'resposta_gateway' => json_encode([
-                'timestamp' => now(),
+            'resposta' => json_encode([
                 'codigo' => '500',
-                'descricao' => 'Transação recusada pelo gateway'
+                'descricao' => 'Transacao recusada pelo gateway'
             ])
         ];
     }
