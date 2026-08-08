@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -34,8 +35,18 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        $this->reportable(function (Throwable $e) {
-            //
+        $this->renderable(function (ValidationException $exception, $request) {
+            return response()->json([
+                'messages' => $exception->errors(),
+                'error' => true,
+            ], 406);
+        });
+
+        $this->renderable(function (Throwable $exception) {
+            return response()->json([
+                'message' => 'Ooops, parece que houve um erro no sistema!',
+                'error' => true,
+            ], 500);
         });
     }
 }
