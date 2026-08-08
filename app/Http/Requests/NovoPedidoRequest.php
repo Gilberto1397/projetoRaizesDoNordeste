@@ -23,8 +23,8 @@ class NovoPedidoRequest extends FormRequest
             'produtos' => 'required|array|min:1',
             'produtos.*.produtoId' => 'required|integer|min:1|exists:produtos,produtos_id',
             'produtos.*.quantidade' => 'required|integer|min:1',
-            'formaPagamento' => 'required|integer|min:1|exists:formas_pagamento,formaspagamentos_id',
-            'canalPedido' => 'required|integer|min:1|exists:canais_pedido,canaispedidos_id',
+            'formaPagamento' => 'required|integer|min:1|exists:formaspagamentos,formaspagamentos_id',
+            'canalPedido' => 'required|integer|min:1|exists:canaispedidos,canaispedidos_id',
             'nomeCliente' => 'string|max:255'
         ];
     }
