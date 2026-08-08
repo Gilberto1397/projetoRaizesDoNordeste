@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AutenticacaoController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PedidoController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('v1')->group(function () {
-    Route::post('/pedidos', [PedidoController::class, 'novoPedido']);
-    Route::post('/auth/login', [AutenticacaoController::class, 'autenticar']);
+    Route::post('/pedidos', [PedidoController::class, 'novoPedido'])->middleware('auth.basic');
+    Route::post('/auth/login', [LoginController::class, 'login']);
 
     Route::get('teste-api', function () {
         return response()->json(['message' => 'API está funcionando!']);

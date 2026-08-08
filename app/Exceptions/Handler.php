@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -40,6 +41,13 @@ class Handler extends ExceptionHandler
                 'messages' => $exception->errors(),
                 'error' => true,
             ], 406);
+        });
+
+        $this->renderable(function (UnauthorizedHttpException $exception) {
+            return response()->json([
+                'message' => 'Usuário não autenticado!',
+                'error' => true,
+            ], 401);
         });
 
         $this->renderable(function (Throwable $exception) {
