@@ -4,6 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int $pedidos_id
+ * @property int $pedidos_canalpedido
+ * @property int $pedidos_cliente
+ * @property string $pedidos_nomecliente
+ * @property int $pedidos_cadastradorpor
+ * @property string $pedidos_created_at
+ */
 class Pedido extends Model
 {
     protected $table = "pedidos";
@@ -15,7 +23,6 @@ class Pedido extends Model
         "pedidos_cliente",
         "pedidos_nomecliente",
         "pedidos_cadastradorpor",
-        "pedidos_observacao",
         "pedidos_created_at"
     ];
 }

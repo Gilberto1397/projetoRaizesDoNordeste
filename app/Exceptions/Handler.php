@@ -3,6 +3,8 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -34,8 +36,25 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        $this->reportable(function (Throwable $e) {
-            //
+        $this->renderable(function (ValidationException $exception, $request) {
+            return response()->json([
+                'messages' => $exception->errors(),
+                'error' => true,
+            ], 422);
+        });
+
+        $this->renderable(function (UnauthorizedHttpException $exception) {
+            return response()->json([
+                'message' => 'Usuário não autenticado!',
+                'error' => true,
+            ], 401);
+        });
+
+        $this->renderable(function (Throwable $exception) {
+            return response()->json([
+                'message' => 'Ooops, parece que houve um erro no sistema!',
+                'error' => true,
+            ], 500);
         });
     }
 }

@@ -27,8 +27,8 @@ class CriandoTabelasPrincipais extends Migration
             $table->bigIncrements('funcionarios_id');
             $table->bigInteger('funcionarios_usuario');
             $table->boolean('funcionarios_ativo')->default(true);
-            $table->bigInteger('funcionarios_cadastradopor');
-            $table->bigInteger('funcionarios_atualizadopor');
+            $table->bigInteger('funcionarios_cadastradopor')->nullable();
+            $table->bigInteger('funcionarios_atualizadopor')->nullable();
             $table->timestamp('funcionarios_created_at')->useCurrent();
             $table->timestamp('funcionarios_updated_at')->useCurrent();
 
@@ -83,7 +83,7 @@ class CriandoTabelasPrincipais extends Migration
         Schema::create('pedidos', function (Blueprint $table) {
             $table->bigIncrements('pedidos_id');
             $table->smallInteger('pedidos_canalpedido');
-            $table->bigInteger('pedidos_cliente');
+            $table->bigInteger('pedidos_cliente')->nullable();
             $table->string('pedidos_nomecliente')->nullable();
             $table->bigInteger('pedidos_cadastradorpor')->nullable();
             $table->timestamp('pedidos_created_at')->useCurrent();
@@ -136,7 +136,7 @@ class CriandoTabelasPrincipais extends Migration
             $table->bigInteger('pedidospagamentos_pedido');
             $table->smallInteger('pedidospagamentos_formapagamento');
             $table->smallInteger('pedidospagamentos_statuspagamentos');
-            $table->string('pedidospagamentos_resposta');
+            $table->jsonb('pedidospagamentos_resposta');
             $table->timestamp('pedidospagamentos_created_at')->useCurrent();
 
             $table->foreign('pedidospagamentos_pedido')
