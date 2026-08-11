@@ -40,7 +40,7 @@ class Handler extends ExceptionHandler
             return response()->json([
                 'messages' => $exception->errors(),
                 'error' => true,
-            ], 406);
+            ], 422);
         });
 
         $this->renderable(function (UnauthorizedHttpException $exception) {

@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('v1')->group(function () {
-    Route::post('/pedidos', [PedidoController::class, 'novoPedido'])->middleware('auth.basic');
+    Route::post('/pedidos', [PedidoController::class, 'novoPedido'])->middleware('auth.basic:,usuarios_email');
     Route::post('/auth/login', [LoginController::class, 'login']);
 
     Route::get('teste-api', function () {

@@ -9,6 +9,7 @@ use Illuminate\Foundation\Http\FormRequest;
  * @property int $formaPagamento
  * @property int $canalPedido
  * @property string $nomeCliente
+ * @property int $perfilUsuario
  */
 class NovoPedidoRequest extends FormRequest
 {
@@ -25,7 +26,8 @@ class NovoPedidoRequest extends FormRequest
             'produtos.*.quantidade' => 'required|integer|min:1',
             'formaPagamento' => 'required|integer|min:1|exists:formaspagamentos,formaspagamentos_id',
             'canalPedido' => 'required|integer|min:1|exists:canaispedidos,canaispedidos_id',
-            'nomeCliente' => 'string|max:255'
+            'nomeCliente' => 'string|max:255',
+            'perfilUsuario' => 'integer|max:1'
         ];
     }
 
@@ -50,6 +52,9 @@ class NovoPedidoRequest extends FormRequest
 
             'nomeCliente.string' => 'O nome do cliente não está em um formato válido.',
             'nomeCliente.max' => 'O nome do cliente é muito longo.',
+
+            'perfilUsuario.integer' => 'O perfil do usuário não está em um formato válido.',
+            'perfilUsuario.max' => 'Usuário sem permissão para esta operação!',
         ];
     }
 
