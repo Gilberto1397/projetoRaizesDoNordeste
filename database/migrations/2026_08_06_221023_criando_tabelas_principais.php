@@ -13,16 +13,6 @@ class CriandoTabelasPrincipais extends Migration
      */
     public function up()
     {
-        Schema::create('usuariosautenticados', function (Blueprint $table) {
-            $table->bigIncrements('usuariosautenticados_id');
-            $table->integer('usuariosautenticados_usuario');
-            $table->dateTime('usuariosautenticados_datahora');
-
-            $table->foreign('usuariosautenticados_usuario')
-                ->references('usuarios_id')
-                ->on('usuarios');
-        });
-
         Schema::create('funcionarios', function (Blueprint $table) {
             $table->bigIncrements('funcionarios_id');
             $table->bigInteger('funcionarios_usuario');
