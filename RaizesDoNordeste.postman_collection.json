@@ -266,7 +266,7 @@
               "basic": [
                 {
                   "key": "username",
-                  "value": "email@funcionario1.com",
+                  "value": "email@funcionario.com",
                   "type": "string"
                 },
                 {
@@ -280,8 +280,7 @@
             "header": [
               {
                 "key": "Accept",
-                "value": "application/json",
-                "type": "text"
+                "value": "application/json"
               }
             ],
             "body": {
@@ -320,7 +319,7 @@
               "basic": [
                 {
                   "key": "username",
-                  "value": "email@funcionario1.com",
+                  "value": "email@funcionario.com",
                   "type": "string"
                 },
                 {
@@ -334,8 +333,7 @@
             "header": [
               {
                 "key": "Accept",
-                "value": "application/json",
-                "type": "text"
+                "value": "application/json"
               }
             ],
             "body": {
@@ -374,7 +372,7 @@
               "basic": [
                 {
                   "key": "username",
-                  "value": "email@funcionario1.com",
+                  "value": "email@funcionario.com",
                   "type": "string"
                 },
                 {
@@ -388,13 +386,12 @@
             "header": [
               {
                 "key": "Accept",
-                "value": "application/json",
-                "type": "text"
+                "value": "application/json"
               }
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"produtos\": [\n        {\n            \"produtoId\": 1,\n            \"quantidade\": -2\n        }\n    ],\n    \"formaPagamento\": 1,\n    \"nomeCliente\": \"string\",\n    \"perfilUsuario\": 1\n}",
+              "raw": "{\n    \"produtos\": [\n        {\n            \"produtoId\": 1,\n            \"quantidade\": -2\n        }\n    ],\n    \"formaPagamento\": 1,\n    \"canalPedido\": 2,\n    \"nomeCliente\": \"string\",\n    \"perfilUsuario\": 1\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -428,7 +425,7 @@
               "basic": [
                 {
                   "key": "username",
-                  "value": "email@funcionario1.com",
+                  "value": "email@funcionario.com",
                   "type": "string"
                 },
                 {
@@ -442,13 +439,12 @@
             "header": [
               {
                 "key": "Accept",
-                "value": "application/json",
-                "type": "text"
+                "value": "application/json"
               }
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"produtos\": [\n        {\n            \"produtoId\": 1,\n            \"quantidade\": 2\n        }\n    ],\n    \"formaPagamento\": 1,\n    \"nomeCliente\": \"string\",\n    \"perfilUsuario\": 1\n}",
+              "raw": "{\n    \"produtos\": [\n        {\n            \"produtoId\": 1,\n            \"quantidade\": 2\n        }\n    ],\n    \"formaPagamento\": 1,\n    \"canalPedido\": 2,\n    \"nomeCliente\": \"string\",\n    \"perfilUsuario\": 1\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -482,7 +478,7 @@
               "basic": [
                 {
                   "key": "username",
-                  "value": "email@funcionario1.com",
+                  "value": "email@funcionario.com",
                   "type": "string"
                 },
                 {
@@ -496,8 +492,7 @@
             "header": [
               {
                 "key": "Accept",
-                "value": "application/json",
-                "type": "text"
+                "value": "application/json"
               }
             ],
             "body": {
@@ -536,7 +531,7 @@
               "basic": [
                 {
                   "key": "username",
-                  "value": "email@funcionario1.com",
+                  "value": "email@funcionario.com",
                   "type": "string"
                 },
                 {
@@ -550,13 +545,12 @@
             "header": [
               {
                 "key": "Accept",
-                "value": "application/json",
-                "type": "text"
+                "value": "application/json"
               }
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"produtos\": [\n        {\n            \"produtoId\": 1,\n            \"quantidade\": 2\n        },\n        {\n            \"produtoId\": 3,\n            \"quantidade\": 4\n        }\n    ],\n    \"formaPagamento\": 1,\n    \"nomeCliente\": \"string\",\n    \"perfilUsuario\": 1\n}",
+              "raw": "{\n    \"produtos\": [\n        {\n            \"produtoId\": 1,\n            \"quantidade\": 2\n        },\n        {\n            \"produtoId\": 3,\n            \"quantidade\": 4\n        }\n    ],\n    \"formaPagamento\": 1,\n    \"canalPedido\": 2,\n    \"nomeCliente\": \"string\",\n    \"perfilUsuario\": 1\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -590,7 +584,7 @@
               "basic": [
                 {
                   "key": "username",
-                  "value": "email@funcionario1.com",
+                  "value": "email@funcionario.com",
                   "type": "string"
                 },
                 {
@@ -604,13 +598,12 @@
             "header": [
               {
                 "key": "Accept",
-                "value": "application/json",
-                "type": "text"
+                "value": "application/json"
               }
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"produtos\": [\n        {\n            \"produtoId\": 1,\n            \"quantidade\": 3\n        }\n    ],\n    \"formaPagamento\": 1,\n    \"nomeCliente\": \"string\",\n    \"perfilUsuario\": 1\n}",
+              "raw": "{\n    \"produtos\": [\n        {\n            \"produtoId\": 1,\n            \"quantidade\": 3\n        }\n    ],\n    \"formaPagamento\": 1,\n    \"canalPedido\": 2,\n    \"nomeCliente\": \"string\",\n    \"perfilUsuario\": 1\n}",
               "options": {
                 "raw": {
                   "language": "json"
